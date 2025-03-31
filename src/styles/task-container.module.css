@@ -1,0 +1,37 @@
+.taskContainer {
+  margin-inline: auto;
+  width: 377px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.16);
+  padding: 24px 16px;
+}
+.taskContainer h1 {
+  color: #000;
+  line-height: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+.taskContainer form {
+  height: 40px;
+  display: flex;
+  gap: 6px;
+}
+.taskContainer form input {
+  border: 1px solid #e4e4e7;
+  border-radius: 5px;
+  padding-inline: 14px;
+  font-size: 14px;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.taskContainer form button {
+  width: 59px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  background-color: #3c82f6;
+}
