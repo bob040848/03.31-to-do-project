@@ -35,3 +35,9 @@
   color: white;
   background-color: #3c82f6;
 }
+.buttonsContainer {
+  display: flex;
+  gap: 6px;
+  height: 32px;
+  margin-block: 18px;
+}
