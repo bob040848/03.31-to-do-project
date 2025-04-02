@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskContainer } from "@/components/TaskContainer";
+import { TaskContainer } from "@/components";
 const TodoFunction = () => {
   return (
     <div className="container">

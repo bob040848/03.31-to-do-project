@@ -20,8 +20,7 @@ export const TaskContainer = () => {
       isCompleted: false,
     };
 
-    setTodoList([...todoList, newTask]);
-
+    setTodoList([newTask, ...todoList]);
     setUserInput("");
   };
 
@@ -47,7 +46,12 @@ export const TaskContainer = () => {
   };
 
   const clearCompleted = () => {
-    setTodoList(todoList.filter((todo) => !todo.isCompleted));
+    const confirmClear = window.confirm(
+      "Are you sure you want to delete all completed tasks?"
+    );
+    if (confirmClear) {
+      setTodoList(todoList.filter((todo) => !todo.isCompleted));
+    }
   };
 
   const filteredTasks = todoList.filter((todo) => {
@@ -58,12 +62,6 @@ export const TaskContainer = () => {
 
   const completedCount = todoList.filter((todo) => todo.isCompleted).length;
 
-  // const handleDelete = (id) => {
-  //   const updatedArr = todoList.filter((todo) => todo.id !== id);
-
-  //   setTodoList(updatedArr);
-  // };
-
   return (
     <div className={style.taskContainer}>
       <h1>To-Do List </h1>
@@ -72,16 +70,36 @@ export const TaskContainer = () => {
           type="text"
           value={userInput}
           placeholder="Add a new task"
-          maxLength={50}
           onChange={handleChange}
         />
-        <button onClick={handleTaskAdd}>Add</button>
+        <button onClick={handleTaskAdd} type="submit">
+          Add
+        </button>
       </form>
 
       <div className={style.buttonsContainer}>
-        <button onClick={() => setFilter("all")}>All</button>
-        <button onClick={() => setFilter("active")}>Active</button>
-        <button onClick={() => setFilter("completed")}>Completed</button>
+        <button
+          onClick={() => setFilter("all")}
+          style={{ backgroundColor: filter === "all" ? "#3c82f6" : "#e5e7eb" }}
+        >
+          All
+        </button>
+        <button
+          onClick={() => setFilter("active")}
+          style={{
+            backgroundColor: filter === "active" ? "#3c82f6" : "#e5e7eb",
+          }}
+        >
+          Active
+        </button>
+        <button
+          onClick={() => setFilter("completed")}
+          style={{
+            backgroundColor: filter === "completed" ? "#3c82f6" : "#e5e7eb",
+          }}
+        >
+          Completed
+        </button>
       </div>
 
       {filteredTasks.length === 0 ? (
@@ -116,28 +134,6 @@ export const TaskContainer = () => {
         </p>
         <button onClick={clearCompleted}>Clear Completed</button>
       </div>
-      {/* <ul>
-        {todoList.length >= 1
-          ? todoList.map(({ title, id, isCompleted }, index) => {
-              return (
-                <li
-                  key={index}
-                  className={todoList.isCompleted ? "completed" : ""}
-                >
-                  <input type="checkbox" name="" id="" />
-                  {title}
-                  <button
-                    onClick={() => {
-                      handleDelete(id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </li>
-              );
-            })
-          : ""}
-      </ul> */}
     </div>
   );
 };

@@ -41,3 +41,19 @@
   height: 32px;
   margin-block: 18px;
 }
+.activeButton,
+.inactiveButton {
+  border: none;
+  border-radius: 6px;
+  padding-inline: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.activeButton {
+  background-color: #3c82f6;
+  color: white;
+}
+.inactiveButton {
+  background-color: #e5e7eb;
+  color: #363636;
+}
