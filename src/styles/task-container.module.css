@@ -34,6 +34,7 @@
   font-size: 14px;
   color: white;
   background-color: #3c82f6;
+  cursor: pointer;
 }
 .buttonsContainer {
   display: flex;
@@ -43,6 +44,7 @@
 }
 .activeButton,
 .inactiveButton {
+  cursor: pointer;
   border: none;
   border-radius: 6px;
   padding-inline: 12px;
@@ -55,5 +57,69 @@
 }
 .inactiveButton {
   background-color: #e5e7eb;
-  color: #363636;
+  color: black;
+}
+.noTask {
+  font-size: 14px;
+  text-align: center;
+  color: #6b7280;
+  padding: 15px 30px;
+}
+.taskList {
+  display: flex;
+  align-items: center;
+  background-color: #f9fafb;
+  padding: 15px;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.taskInput {
+  height: 20px;
+  width: 20px;
+  border-radius: 2px;
+}
+
+.taskList:hover {
+  transition: all 0.4s ease-in-out;
+  background-color: #b4c1c3;
+  cursor: pointer;
+}
+
+.taskDeleteButton {
+  margin-left: auto;
+  color: #ef4444;
+  background-color: #fef2f2;
+  font-size: 14px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding-inline: 10px;
+}
+.taskCounter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.taskCounter p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+.taskCounter button {
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+  color: #ef4444;
+  cursor: pointer;
+}
+.footer p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  padding: 40px 16px 24px 16px;
+  text-align: center;
+}
+.footer span {
+  color: #3b73ed;
 }

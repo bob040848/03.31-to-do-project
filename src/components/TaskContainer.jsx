@@ -76,63 +76,85 @@ export const TaskContainer = () => {
           Add
         </button>
       </form>
-
       <div className={style.buttonsContainer}>
         <button
           onClick={() => setFilter("all")}
-          style={{ backgroundColor: filter === "all" ? "#3c82f6" : "#e5e7eb" }}
+          className={
+            filter === "all" ? style.activeButton : style.inactiveButton
+          }
+          // style={{ backgroundColor: filter === "all" ? "#3c82f6" : "#e5e7eb" }}
         >
           All
         </button>
         <button
           onClick={() => setFilter("active")}
-          style={{
-            backgroundColor: filter === "active" ? "#3c82f6" : "#e5e7eb",
-          }}
+          className={
+            filter === "active" ? style.activeButton : style.inactiveButton
+          }
         >
           Active
         </button>
         <button
           onClick={() => setFilter("completed")}
-          style={{
-            backgroundColor: filter === "completed" ? "#3c82f6" : "#e5e7eb",
-          }}
+          className={
+            filter === "completed" ? style.activeButton : style.inactiveButton
+          }
         >
           Completed
         </button>
       </div>
-
       {filteredTasks.length === 0 ? (
-        <p>No tasks yet. Add one above!</p>
+        <p className={style.noTask}>No tasks yet. Add one above!</p>
       ) : (
         <ul style={{ listStyle: "none" }}>
           {filteredTasks.map((todo) => (
-            <li key={todo.id}>
+            <li key={todo.id} className={style.taskList}>
               <input
                 type="checkbox"
                 checked={todo.isCompleted}
                 onChange={() => toggleTask(todo.id)}
+                className={style.taskInput}
               />
 
-              <span
+              <p
                 style={{
                   textDecoration: todo.isCompleted ? "line-through" : "none",
                   marginLeft: "10px",
+                  fontSize: "14px",
                 }}
               >
                 {todo.title}
-              </span>
+              </p>
 
-              <button onClick={() => removeTask(todo.id)}>Delete</button>
+              <button
+                onClick={() => removeTask(todo.id)}
+                className={style.taskDeleteButton}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
       )}
-      <div>
+      {todoList.length > 0 && (
+        <div className={style.taskCounter}>
+          <p>
+            {completedCount >= 0
+              ? `${completedCount} of ${todoList.length}  tasks completed`
+              : ""}
+          </p>
+          {completedCount >= 0 ? (
+            <button onClick={clearCompleted}>Clear Completed</button>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
+
+      <div className={style.footer}>
         <p>
-          {completedCount} of {todoList.length} tasks completed
+          Powered by <span>Pinecone academy</span>
         </p>
-        <button onClick={clearCompleted}>Clear Completed</button>
       </div>
     </div>
   );
